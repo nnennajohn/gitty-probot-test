@@ -1,6 +1,11 @@
 // @flow
 
 import { css } from 'styled-components';
+import {
+  primaryFontStack,
+  secondaryFontStack,
+  monoFontStack,
+} from './theme/theme-typography';
 
 export const color = {
   // Palette
@@ -38,9 +43,9 @@ export const spacing = {
 
 export const typography = {
   type: {
-    primary: '"Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
-    code:
-      '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace',
+    primary: primaryFontStack,
+    secondary: secondaryFontStack,
+    code: monoFontStack,
   },
   weight: {
     regular: '400',
