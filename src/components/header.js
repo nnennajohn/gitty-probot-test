@@ -73,7 +73,7 @@ const NavWrapper = styled.nav`
 `;
 
 const TooltipList = styled.div`
-  width: 200px;
+  width: 300px;
 `;
 
 const TooltipItem = styled.div`
@@ -141,94 +141,65 @@ export default function Header({
       <Nav>
         <NavGroup>
           <NavItem>
-            <NavLink to="/" isGatsby="true">
+            <NavLink to="/" isGatsby>
               <Logo />
             </NavLink>
           </NavItem>
-          <NavItem>
-            <NavLink className="navbar-item" to="/about">
-              About
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink className="navbar-item" to="/playground">
-              Playground
-            </NavLink>
+          <NavItem showDesktop>
+            <WithTooltip
+              placement="top"
+              mode="click"
+              closeOnClick
+              tooltip={
+                <TooltipList>
+                  <TooltipItem>
+                    <ViewLayerImage src="/logo-react.svg" alt="React" />
+                    <Meta>
+                      <Title>Gatsby / Github Pages Experiment</Title>
+                      <Detail>
+                        <LanguageLink className="tertiary" isGatsby>
+                          Next Weekend will be Lit!
+                        </LanguageLink>
+                      </Detail>
+                    </Meta>
+                  </TooltipItem>
+                  <TooltipItem>
+                    <ViewLayerImage src="/logo-vue.svg" alt="Vue" />
+                    <Meta>
+                      <Title>Gatsby / Redux / GraphQL Play</Title>
+                      <Detail>
+                        <LanguageLink className="tertiary">
+                          Holla GraphQL!
+                        </LanguageLink>
+                      </Detail>
+                    </Meta>
+                  </TooltipItem>
+                  <TooltipItem>
+                    <ViewLayerImage src="/logo-angular.svg" alt="Angular" />
+                    <Meta>
+                      <Title>Styled Components Library</Title>
+                      <Detail>
+                        <LanguageLink className="tertiary" isGatsby>
+                          Super Excited!
+                        </LanguageLink>
+                      </Detail>
+                    </Meta>
+                  </TooltipItem>
+                </TooltipList>
+              }
+            >
+              {/* <NavLink className={inverse ? 'inverse' : 'tertiary'}>
+                  <Icon icon="switchalt" />
+                  {capitalize(framework)}
+                </NavLink> */}
+              <NavLink className="navbar-item">
+                <Icon icon="switchalt" />
+                UPCOMING
+              </NavLink>
+            </WithTooltip>
           </NavItem>
         </NavGroup>
         <NavGroup right>
-          {!isHome && (
-            <NavItem showDesktop>
-              <WithTooltip
-                placement="top"
-                mode="click"
-                closeOnClick
-                tooltip={
-                  <TooltipList>
-                    <TooltipItem>
-                      <ViewLayerImage src="/logo-react.svg" alt="React" />
-                      <Meta>
-                        <Title>React</Title>
-                        <Detail>
-                          <LanguageLink
-                            className="tertiary"
-                            isGatsby
-                            to={`/react/en/${firstChapter}/`}
-                          >
-                            English
-                          </LanguageLink>
-                          <LanguageLink
-                            className="tertiary"
-                            isGatsby
-                            to={`/react/es/${firstChapter}/`}
-                          >
-                            Español
-                          </LanguageLink>
-                        </Detail>
-                      </Meta>
-                    </TooltipItem>
-                    <TooltipItem>
-                      <ViewLayerImage src="/logo-vue.svg" alt="Vue" />
-                      <Meta>
-                        <Title>Vue</Title>
-                        <Detail>
-                          {/* <LanguageLink className="tertiary" isGatsby to={`/vue/en/${firstChapter}/`}>
-                          English
-                        </LanguageLink> */}
-                          <LanguageLink
-                            className="tertiary"
-                            href="https://github.com/hichroma/learnstorybook.com/issues/1"
-                          >
-                            In progress
-                          </LanguageLink>
-                        </Detail>
-                      </Meta>
-                    </TooltipItem>
-                    <TooltipItem>
-                      <ViewLayerImage src="/logo-angular.svg" alt="Angular" />
-                      <Meta>
-                        <Title>Angular</Title>
-                        <Detail>
-                          <LanguageLink
-                            className="tertiary"
-                            isGatsby
-                            to="/react/en/contribute"
-                          >
-                            Contributors wanted
-                          </LanguageLink>
-                        </Detail>
-                      </Meta>
-                    </TooltipItem>
-                  </TooltipList>
-                }
-              >
-                <NavLink className={inverse ? 'inverse' : 'tertiary'}>
-                  <Icon icon="switchalt" />
-                  {capitalize(framework)}
-                </NavLink>
-              </WithTooltip>
-            </NavItem>
-          )}
           <NavItem>
             <GitHubWrapper>
               <GitHubButton

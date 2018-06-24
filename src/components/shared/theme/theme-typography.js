@@ -5,9 +5,9 @@ import colors from './theme-colors';
 
 export const fontFallBackStack = `'-apple-system', 'BlinkMacSystemFont', "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif`;
 
-export const primaryFontStack = `'Nunito Sans' ${fontFallBackStack}`;
+export const primaryFontStack = `'Nunito Sans', ${fontFallBackStack}`;
 
-export const secondaryFontStack = `'Lato' ${fontFallBackStack}`;
+export const secondaryFontStack = `'avenir-roman', ${fontFallBackStack}`;
 
 export const monoFontStack = `
   "SFMono-Medium", "SF Mono", "Segoe UI Mono", "Roboto Mono", "Ubuntu Mono", 'Input Mono', 'Menlo',

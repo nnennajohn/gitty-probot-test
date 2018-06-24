@@ -23,6 +23,7 @@ export const bodyStyles = css`
   h4,
   h5,
   h6 {
+    font-family: ${typography.type.secondary};
     font-weight: ${typography.weight.regular};
     margin: 0;
     padding: 0;
@@ -33,7 +34,7 @@ export const bodyStyles = css`
   textarea,
   select {
     outline: none;
-    font-family: ${typography.type.primary};
+    font-family: ${typography.type.secondary};
   }
 
   sub,
@@ -157,13 +158,13 @@ export const bodyStyles = css`
   }
 
   .waves-wrapper {
-    height: 124px;
+    height: 100px;
     transform: rotate(180deg);
   }
 
   .waves {
     position: absolute;
-    top: 40px;
+    top: 10px;
     width: calc(100% + 400px);
     margin: 0 0 0 -200px;
   }

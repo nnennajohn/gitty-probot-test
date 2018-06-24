@@ -20,6 +20,7 @@ import wordWrap from './mixins/wordWrap';
 
 // Helpers
 import shadeColor from './helpers/shade-color';
+import tocEntries from './helpers/toc-entries';
 import warning from './helpers/warning';
 
 // Icons
@@ -43,6 +44,7 @@ export {
   wordWrap,
   // helpers
   shadeColor,
+  tocEntries,
   warning,
   // Icons
   icons,

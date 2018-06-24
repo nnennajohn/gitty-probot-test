@@ -1549,7 +1549,7 @@ html {
   padding: 0;
   margin: 0;
   -webkit-font-smoothing: antialiased;
-  font-family: "proxima-soft", -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+  font-family: "avenir-roman", -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
