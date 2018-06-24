@@ -1,3 +1,4 @@
+// @flow
 import rem from '../rem';
 
 describe('rem', () => {
