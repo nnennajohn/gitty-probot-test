@@ -22,6 +22,9 @@ import wordWrap from './mixins/wordWrap';
 import shadeColor from './helpers/shade-color';
 import warning from './helpers/warning';
 
+// Icons
+import icons from './icons';
+
 export * from './styles';
 export {
   // theme
@@ -41,4 +44,6 @@ export {
   // helpers
   shadeColor,
   warning,
+  // Icons
+  icons,
 };
