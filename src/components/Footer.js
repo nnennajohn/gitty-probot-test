@@ -9,7 +9,7 @@ import { color, typography, pageMargins } from './shared';
 const FooterWrapper = styled.footer`
   ${pageMargins};
   text-align: center;
-  padding: 3rem 0;
+  padding: 1rem 0 0;
   color: ${color.mediumdark};
 `;
 
@@ -26,22 +26,21 @@ const FooterLogo = styled(Logo)`
 const Footer = ({ ...props }) => (
   <FooterWrapper {...props}>
     <a
-      href="https://blog.hichroma.com"
+      href="https://weekendprojects.io"
       target="_blank"
       rel="noopener noreferrer"
     >
       <FooterLogo />
     </a>
     <br />
-    Made by{' '}
+    Made with lots of love by{' '}
     <FooterLink
       className="secondary"
-      href="https://blog.hichroma.com"
+      href="https://github.com/nnennajohn"
       target="_blank"
     >
-      Chroma
-    </FooterLink>{' '}
-    and the awesome Storybook community
+      Nnenna John
+    </FooterLink>.
   </FooterWrapper>
 );
 

@@ -17,30 +17,37 @@ import Link from '../components/Link';
 import Button from '../components/Button';
 import CTA from '../components/CTA';
 import Subheading from '../components/Subheading';
+import { BrandTiles } from '../components/Logo';
 
 const Title = styled.h1`
-  color: ${color.lightest};
-  font-weight: ${typography.weight.extrabold};
-  font-size: ${typography.size.l2}px;
+  font-size: ${typography.size.s2}px;
+  font-weight: ${typography.weight.bold};
+  letter-spacing: 1.5px;
+  color: #c5e9fb;
   line-height: 1;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
   margin-bottom: 0.2em;
   text-shadow: rgba(0, 135, 220, 0.3) 0 1px 5px;
   @media (min-width: ${breakpoint * 1.5}px) {
-    font-size: ${typography.size.l3}px;
+    font-size: ${typography.size.s3}px;
   }
 `;
 
 const Desc = styled.div`
+  letter-spacing: -0.2px;
+  text-align: center;
   color: ${color.lightest};
-  font-size: ${typography.size.s3}px;
-  line-height: 1.4;
+  font-weight: ${typography.weight.regular};
+  font-size: ${typography.size.m3}px;
+  line-height: 1.33;
   margin-bottom: 1em;
   text-shadow: rgba(0, 135, 220, 0.3) 0 1px 5px;
   @media (min-width: ${breakpoint * 1}px) {
-    font-size: ${typography.size.m1}px;
+    font-size: ${typography.size.l1}px;
   }
   @media (min-width: ${breakpoint * 2}px) {
-    font-size: ${typography.size.m2}px;
+    font-size: ${typography.size.l2}px;
   }
 `;
 
@@ -77,8 +84,7 @@ const Pitch = styled.div`
   z-index: 1;
   flex: 1;
   @media (min-width: ${breakpoint * 1.5}px) {
-    flex: 0 1 55%;
-    padding-right: 3rem;
+    flex: 0 1 65%;
   }
 `;
 
@@ -89,10 +95,10 @@ const Content = styled.div`
   text-align: center;
   flex-direction: column-reverse;
   justify-content: center;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
   @media (min-width: ${breakpoint * 1.5}px) {
-    padding-top: 4rem;
+    padding-top: 7rem;
     padding-bottom: 3rem;
     flex-direction: row;
     display: flex;
@@ -109,11 +115,6 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
   }
-`;
-
-const Question = styled.h3`
-  font-size: ${typography.size.m3}px;
-  font-weight: ${typography.weight.extrabold};
 `;
 
 const Answer = styled.div`
@@ -133,7 +134,8 @@ const Answer = styled.div`
   }
 `;
 
-const FAQLayout = styled.div`
+const IntroSection = styled.div`
+  text-align: center;
   padding: 4rem ${spacing.padding.medium}px 1rem;
   @media (min-width: ${breakpoint * 1}px) {
     margin: 0 ${pageMargin * 3}%;
@@ -141,6 +143,11 @@ const FAQLayout = styled.div`
   @media (min-width: ${breakpoint * 2}px) {
     margin: 0 ${pageMargin * 4}%;
   }
+`;
+
+const IntroSectionTitle = styled.h3`
+  font-size: ${typography.size.m3}px;
+  font-weight: ${typography.weight.extrabold};
 `;
 
 const ClickIntercept = styled(Link)`
@@ -245,54 +252,30 @@ export default ({
               Learn Storybook to create bulletproof UI components, along the way
               you&rsquo;ll build an app UI from scratch.
             </Desc>
-
-            <ActionHeading>React</ActionHeading>
-            <Actions>
-              <Link isGatsby to={`/react/en/${firstChapter}`}>
-                <Button inverse>
-                  <ViewLayerImage src="/logo-react.svg" alt="React" />English
-                </Button>
-              </Link>
-              <Link isGatsby to={`/react/es/${firstChapter}`}>
-                <Button inverse>
-                  <ViewLayerImage src="/logo-react.svg" alt="React" />Español
-                </Button>
-              </Link>
-            </Actions>
+            <BrandTiles />
           </Pitch>
         </Content>
       </Wrapper>
-      <FAQLayout>
-        <Question>Why a Storybook tutorial?</Question>
-        <Answer>
-          <p>
-            Learn Storybook aims to teach tried-and-true patterns for component
-            development using Storybook. You&rsquo;ll walk through essential UI
-            component techniques while building a UI from scratch in React (Vue
-            and Angular coming soon).
-          </p>
-          <p>
-            The info here is sourced from professional teams, core maintainers,
-            and the awesome Storybook community. Rather than trying to cover
-            every edge case –which can take forever!– this tutorial recommends
-            best practices.{' '}
-            <Link
-              className="primary"
-              href="https://blog.hichroma.com/introducing-learnstorybook-com-2a43cd33edf5"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Read the announcement »
+      <IntroSection>
+        <div style={{ marginBottom: '20px' }}>
+          <Title style={{ color: color.dark }}>This Weekeend</Title>
+          <IntroSectionTitle>
+            <span>Building our First Gitbub App with Probot</span>
+          </IntroSectionTitle>
+          <Actions>
+            <Link isGatsby to={`/react/en/${firstChapter}`}>
+              <Button inverse>
+                <ViewLayerImage src="/logo-react.svg" alt="React" />Get Started
+              </Button>
             </Link>
-          </p>
-        </Answer>
-
+          </Actions>
+        </div>
         <img
-          src="/logo-storybook.svg"
+          src="/probot.svg"
           style={{ width: '50%', margin: '3rem auto', display: 'block' }}
-          alt="Storybook logo"
+          alt="Probot logo"
         />
-        <Question>What is Storybook?</Question>
+        <IntroSectionTitle>What is Storybook?</IntroSectionTitle>
         <Answer>
           <p>
             <Link
@@ -316,7 +299,7 @@ export default ({
           </p>
         </Answer>
 
-        <Question>What you&rsquo;ll build</Question>
+        <IntroSectionTitle>What you&rsquo;ll build</IntroSectionTitle>
         <Answer>
           <img
             src="/ss-browserchrome-taskbox-learnstorybook.png"
@@ -337,7 +320,7 @@ export default ({
           </p>
         </Answer>
 
-        <Question>What&rsquo;s inside</Question>
+        <IntroSectionTitle>What&rsquo;s inside</IntroSectionTitle>
         <Answer>
           <Chapters>
             {entries.map(({ slug, title, description }) => (
@@ -351,7 +334,7 @@ export default ({
             ))}
           </Chapters>
         </Answer>
-        <Question>Who&rsquo;s this for?</Question>
+        <IntroSectionTitle>Who&rsquo;s this for?</IntroSectionTitle>
         <Answer>
           <p>
             This tutorial is for developers of all skill levels that are new to
@@ -373,7 +356,7 @@ export default ({
           </p>
         </Answer>
 
-        <Question>How long does it take?</Question>
+        <IntroSectionTitle>How long does it take?</IntroSectionTitle>
         <Answer>
           <p>
             Developer time is precious. This tutorial covers the key parts of
@@ -392,7 +375,7 @@ export default ({
             </Link>
           }
         />
-      </FAQLayout>
+      </IntroSection>
     </Fragment>
   );
 };
