@@ -1,0 +1,17 @@
+# Project dependencies
+.cache
+node_modules
+flow-typed
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log
+yarn-debug.log*
+
+# Build directory
+/public
+.DS_Store
+
+# IDE
+.vscode

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Styles matches Container 1`] = `
+.c0 {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+}
+
+@media only screen and (min-width:40em) {
+  .c0 {
+    max-width: 46rem;
+  }
+}
+
+@media only screen and (min-width:64em) {
+  .c0 {
+    max-width: 61rem;
+  }
+}
+
+@media only screen and (min-width:75em) {
+  .c0 {
+    max-width: 76rem;
+  }
+}
+
+<div
+  className="c0"
+/>
+`;

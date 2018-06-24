@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contact Google Map component 1`] = `
+<withScriptjs(withGoogleMap(CMap))
+  center={
+    Object {
+      "lat": 40.463454,
+      "lng": -3.67186,
+    }
+  }
+  containerElement={
+    <div
+      style={
+        Object {
+          "height": "400px",
+        }
+      }
+    />
+  }
+  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ6tkAoMSO8ygMYmhuA9FrOTPVFJYKhqw"
+  loadingElement={
+    <div
+      style={
+        Object {
+          "height": "100%",
+        }
+      }
+    />
+  }
+  mapElement={
+    <div
+      style={
+        Object {
+          "height": "100%",
+        }
+      }
+    />
+  }
+>
+  <div
+    style={
+      Object {
+        "height": "100%",
+      }
+    }
+  />
+</withScriptjs(withGoogleMap(CMap))>
+`;
