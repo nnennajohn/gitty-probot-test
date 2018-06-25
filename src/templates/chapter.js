@@ -61,6 +61,8 @@ const Sidebar = styled.div`
     position: relative;
     @media screen and (min-width: ${breakpoint}px) {
       margin: 0 0 2rem 24px;
+      position: sticky;
+      top: 50px;
       &:after {
         position: absolute;
         top: 12px;
@@ -280,13 +282,10 @@ export default ({
         </Markdown>
 
         {commit && (
-          <CTAWrapper
-            target="_blank"
-            href={`${codeGithubUrl}/commit/${commit}`}
-          >
+          <CTAWrapper target="_blank" href={`${githubFileUrl}`}>
             <IconCommit />
             <CTAMessage>
-              Keep your code in sync with this chapter. View {commit} on GitHub.
+              Keep your code in sync with this chapter. View file on GitHub.
             </CTAMessage>
           </CTAWrapper>
         )}

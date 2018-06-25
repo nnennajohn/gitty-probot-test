@@ -214,19 +214,6 @@ const Chapters = styled.ol`
   flex-wrap: wrap;
 `;
 
-// const IndexPage = () => (
-//   <div>
-//     <h1>Hi people</h1>
-//     <p>Welcome to your new Gatsby site.</p>
-//     <p>Now go build something great.</p>
-//     <Link to="/page-2/" isGatsby>
-//       Go to page 2
-//     </Link>
-//   </div>
-// );
-
-// export default IndexPage;
-
 type Props = {
   data: {
     site: { siteMetadata: { toc: any, defaultTranslation: any } },
@@ -256,10 +243,10 @@ export default ({
       <Wrapper>
         <Content>
           <Pitch>
-            <Title>Storybook Tutorial</Title>
+            <Title>Bite-Sized Learning</Title>
             <Desc>
-              Learn Storybook to create bulletproof UI components, along the way
-              you&rsquo;ll build an app UI from scratch.
+              Each weekend, come along for a ride with me as I learn a new
+              technical skill, while building a fun project.
             </Desc>
             <BrandTiles />
           </Pitch>
@@ -295,16 +282,35 @@ export default ({
             >
               Probot
             </Link>{' '}
-            is the most popular UI component development tool for React, Vue,
-            and Angular. It helps you{' '}
-            <strong>
-              develop and design UI components outside your app in an isolated
-              environment
-            </strong>.
+            is a framework for building{' '}
+            <Link
+              className="primary"
+              href="http://developer.github.com/apps"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <strong>GitHub Apps</strong>
+            </Link>{' '}
+            in{' '}
+            <Link
+              className="primary"
+              href="https://nodejs.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <strong>Node.js</strong>
+            </Link>. It aims to eliminate all the drudgery–like receiving and
+            validating webhooks, and doing authentication handstands–so you can
+            focus on the features you want to build.
           </p>
           <p>
-            Professional developers at Airbnb, Dropbox, and Lonely Planet use
-            Storybook to build durable documented UIs faster.
+            From the website, it says "Probot apps are easy to write, deploy,
+            and share. Many of the most popular Probot apps are hosted, so
+            there's nothing for you to deploy and manage."
+          </p>
+          <p>
+            Let's take it for a test run by building a Github App that posts a
+            comment to a PR when our tests fail on a CI Server.
           </p>
         </IntroSectionDescription>
 
