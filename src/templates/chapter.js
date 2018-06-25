@@ -293,12 +293,12 @@ export default ({
 
         <CTAWrapper
           target="_blank"
-          href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Flearnstorybook.com%2F&ref_src=twsrc%5Etfw&text=I%E2%80%99m%20learning%20Storybook!%20It%E2%80%99s%20a%20great%20dev%20tool%20for%20UI%20components.%20&tw_p=tweetbutton&url=https%3A%2F%2Flearnstorybook.com&via=hi_chroma"
+          href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fweekendprojects.io%2F&ref_src=twsrc%5Etfw&text=I%E2%80%99m%20learning%20Probot!%20It%E2%80%99s%20a%20simple%20framework%20for%20building%20Github%20Apps.%20&tw_p=tweetbutton&url=https%3A%2F%2Fweekendprojects.io&via=nnennajohn"
         >
           <LogoTwitter />
           <CTAMessage>
-            Tweet "I&rsquo;m learning Storybook! It’s a great dev tool for UI
-            components."
+            Tweet "I&rsquo;m learning Probot! It’s a simple framework for
+            building Github Apps."
           </CTAMessage>
         </CTAWrapper>
 

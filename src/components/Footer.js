@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Link from './Link';
 import Logo from './Logo';
 import { color, typography, pageMargins } from './shared';
+import Icon from './Icon';
 
 const FooterWrapper = styled.footer`
   ${pageMargins};
@@ -33,7 +34,7 @@ const Footer = ({ ...props }) => (
       <FooterLogo />
     </a>
     <br />
-    Made with lots of love by{' '}
+    Made with lots of <Icon icon="heart" className="mh2" fill="red" /> by{' '}
     <FooterLink
       className="secondary"
       href="https://github.com/nnennajohn"

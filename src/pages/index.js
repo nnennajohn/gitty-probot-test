@@ -98,7 +98,7 @@ const Content = styled.div`
   padding-top: 3rem;
   padding-bottom: 1rem;
   @media (min-width: ${breakpoint * 1.5}px) {
-    padding-top: 7rem;
+    padding-top: 8rem;
     padding-bottom: 3rem;
     flex-direction: row;
     display: flex;
@@ -117,7 +117,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Answer = styled.div`
+const IntroSectionDescription = styled.div`
   margin-bottom: 3rem;
   font-size: 18px;
   line-height: 1.65;
@@ -133,10 +133,16 @@ const Answer = styled.div`
     display: block;
   }
 `;
-
+const WeekendIntro = styled('div')`
+  margin-bottom: 20px;
+  background: #e6f4fe;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+`;
 const IntroSection = styled.div`
   text-align: center;
-  padding: 4rem ${spacing.padding.medium}px 1rem;
+  padding: 0 ${spacing.padding.medium}px 1rem;
   @media (min-width: ${breakpoint * 1}px) {
     margin: 0 ${pageMargin * 3}%;
   }
@@ -182,6 +188,7 @@ const Chapter = styled.li`
   margin-bottom: 0.5rem;
   padding: 20px 30px;
   position: relative;
+  flex: 0 0 50%;
   &:hover {
     background: ${shadeColor(color.app, 3)};
   }
@@ -203,6 +210,8 @@ const Chapters = styled.ol`
   margin: 0;
   padding: 1rem 0;
   counter-reset: counter;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 // const IndexPage = () => (
@@ -256,35 +265,35 @@ export default ({
           </Pitch>
         </Content>
       </Wrapper>
+      <WeekendIntro>
+        <Title style={{ color: color.dark }}>This Weekeend</Title>
+        <IntroSectionTitle>
+          <span>Building our First Gitbub App with Probot</span>
+        </IntroSectionTitle>
+      </WeekendIntro>
       <IntroSection>
-        <div style={{ marginBottom: '20px' }}>
-          <Title style={{ color: color.dark }}>This Weekeend</Title>
-          <IntroSectionTitle>
-            <span>Building our First Gitbub App with Probot</span>
-          </IntroSectionTitle>
-          <Actions>
-            <Link isGatsby to={`/react/en/${firstChapter}`}>
-              <Button inverse>
-                <ViewLayerImage src="/logo-react.svg" alt="React" />Get Started
-              </Button>
-            </Link>
-          </Actions>
-        </div>
+        <Actions>
+          <Link isGatsby to={`/react/en/${firstChapter}`}>
+            <Button inverse style={{ border: '1px solid' }}>
+              Get Started
+            </Button>
+          </Link>
+        </Actions>
         <img
           src="/probot.svg"
           style={{ width: '50%', margin: '3rem auto', display: 'block' }}
           alt="Probot logo"
         />
-        <IntroSectionTitle>What is Storybook?</IntroSectionTitle>
-        <Answer>
+        <IntroSectionTitle className="pt4">What is Probot?</IntroSectionTitle>
+        <IntroSectionDescription>
           <p>
             <Link
               className="primary"
-              href="https://storybook.js.org/"
+              href="https://probot.github.io/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Storybook
+              Probot
             </Link>{' '}
             is the most popular UI component development tool for React, Vue,
             and Angular. It helps you{' '}
@@ -297,31 +306,12 @@ export default ({
             Professional developers at Airbnb, Dropbox, and Lonely Planet use
             Storybook to build durable documented UIs faster.
           </p>
-        </Answer>
+        </IntroSectionDescription>
 
-        <IntroSectionTitle>What you&rsquo;ll build</IntroSectionTitle>
-        <Answer>
-          <img
-            src="/ss-browserchrome-taskbox-learnstorybook.png"
-            alt="Taskbox UI"
-          />
-          <p>
-            Taskbox, a task management UI (similar to Asana), complete with
-            multiple item types and states. We’ll go from building simple UI
-            components to assembling screens. Each chapter illustrates a
-            different aspect of developing UIs with Storybook.
-          </p>
-          <p>
-            <span role="img" aria-label="book">
-              📖
-            </span>{' '}
-            Each chapter is linked to a <b>working commit</b> to help you stay
-            in sync.
-          </p>
-        </Answer>
-
-        <IntroSectionTitle>What&rsquo;s inside</IntroSectionTitle>
-        <Answer>
+        <IntroSectionTitle className="pt4">
+          What&rsquo;s inside
+        </IntroSectionTitle>
+        <IntroSectionDescription>
           <Chapters>
             {entries.map(({ slug, title, description }) => (
               <Chapter key={slug}>
@@ -333,31 +323,11 @@ export default ({
               </Chapter>
             ))}
           </Chapters>
-        </Answer>
-        <IntroSectionTitle>Who&rsquo;s this for?</IntroSectionTitle>
-        <Answer>
-          <p>
-            This tutorial is for developers of all skill levels that are new to
-            Storybook. If you follow along, you’ll be able to grasp the core
-            concepts of isolated UI component development and build a full UI in
-            Storybook without issue.
-          </p>
-          <p>
-            We assume that you’re familiar with basic JavaScript, components,
-            and web development. If you already use Storybook, checkout the{' '}
-            <Link href="https://storybook.js.org/basics/introduction/">
-              official docs
-            </Link>{' '}
-            for API documentation or visit{' '}
-            <Link href="https://blog.hichroma.com/" target="_blank">
-              Chroma on Medium
-            </Link>{' '}
-            for more resources like this.
-          </p>
-        </Answer>
-
-        <IntroSectionTitle>How long does it take?</IntroSectionTitle>
-        <Answer>
+        </IntroSectionDescription>
+        <IntroSectionTitle className="pt4">
+          How long did this take?
+        </IntroSectionTitle>
+        <IntroSectionDescription>
           <p>
             Developer time is precious. This tutorial covers the key parts of
             Storybook to get you started as quickly as possible. Finish it in
@@ -365,13 +335,14 @@ export default ({
             shorter. Our aim is to be the most efficient way to onboard to
             Storybook.
           </p>
-        </Answer>
+        </IntroSectionDescription>
 
         <CTA
-          text={`Let's learn Storybook!`}
+          className="pt4"
+          text={`Let's get Building!`}
           action={
             <Link isGatsby to={`/react/en/${firstChapter}`}>
-              <Button primary>Start tutorial</Button>
+              <Button primary>Start Guide</Button>
             </Link>
           }
         />

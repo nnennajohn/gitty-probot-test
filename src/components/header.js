@@ -157,7 +157,7 @@ export default function Header({
                     <Meta>
                       <Title>Gatsby / Github Pages Experiment</Title>
                       <Detail>
-                        <LanguageLink className="tertiary" isGatsby>
+                        <LanguageLink className="tertiary" to="/" isGatsby>
                           Next Weekend will be Lit!
                         </LanguageLink>
                       </Detail>
@@ -168,7 +168,7 @@ export default function Header({
                     <Meta>
                       <Title>Gatsby / Redux / GraphQL Play</Title>
                       <Detail>
-                        <LanguageLink className="tertiary">
+                        <LanguageLink className="tertiary" to="/" isGatsby>
                           Holla GraphQL!
                         </LanguageLink>
                       </Detail>
@@ -179,7 +179,7 @@ export default function Header({
                     <Meta>
                       <Title>Styled Components Library</Title>
                       <Detail>
-                        <LanguageLink className="tertiary" isGatsby>
+                        <LanguageLink className="tertiary" to="/" isGatsby>
                           Super Excited!
                         </LanguageLink>
                       </Detail>

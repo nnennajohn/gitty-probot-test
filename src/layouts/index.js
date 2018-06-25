@@ -143,7 +143,7 @@ const Layout = ({
       <link
         rel="shortcut icon"
         type="image/png"
-        href="/icon-learnstorybook.png"
+        href="/icon-learn.png"
         sizes="16x16 32x32 64x64"
       />
       <title>{title}</title>
