@@ -143,7 +143,7 @@ const Layout = ({
       <link
         rel="shortcut icon"
         type="image/png"
-        href="/icon-learn.png"
+        href="/logo-icon-only.png"
         sizes="16x16 32x32 64x64"
       />
       <title>{title}</title>
@@ -151,11 +151,11 @@ const Layout = ({
 
       <meta
         property="og:image"
-        content="https://www.learnstorybook.com/opengraph-cover.jpg"
+        content="https://weekendprojects.io/opengraph-cover.png"
       />
       <meta
         name="twitter:image"
-        content="https://www.learnstorybook.com/opengraph-cover.jpg"
+        content="https://weekendprojects.io/opengraph-cover.png"
       />
       <meta property="og:url" content={permalink} />
       <meta property="og:title" content={title} />
@@ -165,7 +165,7 @@ const Layout = ({
 
       <meta
         name="google-site-verification"
-        content="YjriYM9U-aWxhu_dv3PWfCFQ3JNkb7ndk7r_mUlCKAY"
+        content="JCYslXlLmnyqeBgCvXbR9-g4tQ3RdvWMo42YdP08r84"
       />
     </Helmet>
 

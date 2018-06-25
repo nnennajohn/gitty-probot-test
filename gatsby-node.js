@@ -70,7 +70,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           const { slug, framework, language, chapter } = node.fields;
 
           if (`${framework}/${language}` === defaultTranslation) {
-            // Redirect the old URL format (/get-started) to our slug
+            // Redirect the old URL format (/getting-started) to our slug
             createRedirect({
               fromPath: `/${chapter}/`,
               isPermanent: true,

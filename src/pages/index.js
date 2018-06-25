@@ -260,7 +260,7 @@ export default ({
       </WeekendIntro>
       <IntroSection>
         <Actions>
-          <Link isGatsby to={`/react/en/${firstChapter}`}>
+          <Link isGatsby to={`/probot/en/${firstChapter}`}>
             <Button inverse style={{ border: '1px solid' }}>
               Get Started
             </Button>
@@ -335,11 +335,11 @@ export default ({
         </IntroSectionTitle>
         <IntroSectionDescription>
           <p>
-            Developer time is precious. This tutorial covers the key parts of
-            Storybook to get you started as quickly as possible. Finish it in
-            less than two hours. If you&rsquo;re an experienced developer even
-            shorter. Our aim is to be the most efficient way to onboard to
-            Storybook.
+            This weekend project should, you guessed it, take no more than a
+            weekend to cover all the basic and build a small functional bot. My
+            guess is, f you&rsquo;re an experienced developer, it would probably
+            take you no more than a few hours. Either way, I am super excited to
+            learn all about building robots for Github;
           </p>
         </IntroSectionDescription>
 
@@ -347,7 +347,7 @@ export default ({
           className="pt4"
           text={`Let's get Building!`}
           action={
-            <Link isGatsby to={`/react/en/${firstChapter}`}>
+            <Link isGatsby to={`/probot/en/${firstChapter}`}>
               <Button primary>Start Guide</Button>
             </Link>
           }
