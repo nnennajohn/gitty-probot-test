@@ -24,7 +24,7 @@
     "lint:scss": "stylelint --syntax=scss ./src/**/*.scss",
     "lint:js": "eslint . && flow check .",
     "precommit": "lint-staged",
-    "preview": "npm run clean && npm run build && http-server ./public -p 8000 -P http://localhost:8000",
+    "preview": "yarn clean && yarn build && http-server ./public -p 8000 -P http://localhost:8000",
     "test": "jest",
     "test:watch": "jest --watch",
     "test-coverage": "jest --coverage",
