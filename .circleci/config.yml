@@ -10,12 +10,6 @@ aliases:
       - node_modules
     key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
-   - &deploy
-    command: |
-      git config --global user.email "nnennajohn@gmail.com"
-      git config --global user.name Nnenna John"
-      yarn deploy
-
 version: 2
 general:
   branches:
@@ -55,5 +49,5 @@ jobs:
       - restore-cache: *restore-cache
       - run: yarn --no-progress
       - save-cache: *save-cache
-      - deploy: *deploy
+      - run: yarn deploy
 
