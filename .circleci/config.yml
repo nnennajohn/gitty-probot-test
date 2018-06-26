@@ -26,8 +26,6 @@ jobs:
       - run: yarn --no-progress
       - save-cache: *save-cache
       - run: yarn lint:ci && yarn typecheck:ci
-      - store_test_results:
-          path: reports/junit
 
   test-jest:
     working_directory: ~/gitty-probot-test
@@ -40,17 +38,6 @@ jobs:
       - save-cache: *save-cache
       - run: yarn test:ci
 
-  deploy-website:
-    working_directory: ~/gitty-probot-test
-    docker:
-      - image: circleci/node:8
-    steps:
-      - checkout
-      - restore-cache: *restore-cache
-      - run: yarn --no-progress
-      - save-cache: *save-cache
-      - run: yarn deploy
-
 # Workflows enables us to run multiple jobs in parallel
 workflows:
   version: 2
@@ -58,4 +45,3 @@ workflows:
     jobs:
       - lint-and-typecheck
       - test-jest
-      - deploy-website
