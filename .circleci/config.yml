@@ -25,9 +25,6 @@ jobs:
           paths:
             - node_modules
       - run:
-          name: lint
-          command: yarn lint:js
-      - run:
           name: test
           command: yarn test
       - run:
