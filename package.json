@@ -128,9 +128,9 @@
   },
   "jest": {
     "setupFiles": [
-      "./test/jestSetup.js"
+      "<rootDir>/test/jestSetup.js"
     ],
-    "setupTestFrameworkScriptFile": "./test/jestFrameworkSetup.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/test/jestFrameworkSetup.js",
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],

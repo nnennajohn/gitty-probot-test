@@ -29,7 +29,7 @@ jobs:
       - store_test_results:
           path: reports/junit
 
-  build:
+  run-tests:
     working_directory: ~/gitty-probot-test
     docker:
       - image: node:9
