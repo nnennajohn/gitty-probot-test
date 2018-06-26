@@ -26,9 +26,7 @@ jobs:
       - run:
           name: test
           command: yarn test
-  deployment:
-    production:
-      branch: master
-      commands:
-      - ./scripts/deploy-ghpages.sh build
+      - run:
+          name: deploy
+          command: ./scripts/deploy-ghpages.sh build
 
