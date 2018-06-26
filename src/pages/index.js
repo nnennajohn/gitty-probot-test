@@ -135,7 +135,7 @@ const IntroSectionDescription = styled.div`
 `;
 const WeekendIntro = styled('div')`
   margin-bottom: 20px;
-  background: #e6f4fe;
+  background: ${color.purpleTint};
   text-align: center;
   padding-top: 30px;
   padding-bottom: 30px;

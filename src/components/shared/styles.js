@@ -15,6 +15,7 @@ export const color = {
   ancillary: '#3C7384',
 
   app: '#f6f9fc',
+  purpleTint: '#eff0fa',
 
   // Grayscale
   lightest: '#FFFFFF',
