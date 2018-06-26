@@ -31,7 +31,7 @@ function shadeColor(color: any, index?: number = 5) {
     let saturation;
     if (isLight) {
       saturation = Math.round(hsv.s * 100) - saturationStep * i;
-    } else if (i == darkColorCount) {
+    } else if (i === darkColorCount) {
       saturation = Math.round(hsv.s * 100) + saturationStep;
     } else {
       saturation = Math.round(hsv.s * 100) + saturationStep2 * i;

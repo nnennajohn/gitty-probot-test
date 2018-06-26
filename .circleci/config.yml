@@ -1,4 +1,8 @@
 version: 2
+general:
+  branches:
+    ignore:
+      - gh-pages
 jobs:
   build:
     docker:
@@ -28,5 +32,5 @@ jobs:
           command: yarn test
       - run:
           name: deploy
-          command: ./scripts/deploy-ghpages.sh build
+          command: yarn deploy
 
