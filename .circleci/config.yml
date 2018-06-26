@@ -38,7 +38,7 @@ jobs:
       - restore-cache: *restore-cache
       - run: yarn --no-progress
       - save-cache: *save-cache
-      - run: yarn test
+      - run: yarn test:ci
 
   deploy-website:
     working_directory: ~/gitty-probot-test
