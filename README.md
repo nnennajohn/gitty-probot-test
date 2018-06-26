@@ -1,6 +1,6 @@
 # gitty-probot-test
 
-Demo repo for testing Gitty Probot - Built with Gatsby
+Demo repo for testing Gitty Probot - Built with Gatsby.
 
 ## Install
 
