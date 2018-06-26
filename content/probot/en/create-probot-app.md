@@ -3,8 +3,7 @@ tags:
   - probot
 title: "Create Robot App"
 tocTitle: "Create Robot App"
-description: "Getting started by going through Probot Docs and Github Webhook API"
-commit: 30939d5
+description: "Bootstrapping our App With Create Probot App"
 ---
 
 # Getting Started

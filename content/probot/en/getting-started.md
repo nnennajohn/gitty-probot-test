@@ -4,7 +4,6 @@ tags:
 title: "Getting started"
 tocTitle: "Getting started"
 description: "Getting started by going through Probot Docs and Github Webhook API"
-commit: 30939d5
 ---
 
 # Getting Started
