@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`clearFix should default to & when no parent is passed 1`] = `
+Object {
+  "&::after": Object {
+    "clear": "both",
+    "content": "\\"\\"",
+    "display": "table",
+  },
+  "&::before": Object {
+    "content": "\\"\\"",
+    "display": "table",
+  },
+  "zoom": 1,
+}
+`;
+
+exports[`clearFix should pass parent to pseudo selector 1`] = `
+Object {
+  "div::after": Object {
+    "clear": "both",
+    "content": "\\"\\"",
+    "display": "table",
+  },
+  "div::before": Object {
+    "content": "\\"\\"",
+    "display": "table",
+  },
+  "zoom": 1,
+}
+`;

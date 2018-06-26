@@ -337,9 +337,9 @@ export default ({
           <p>
             This weekend project should, you guessed it, take no more than a
             weekend to cover all the basic and build a small functional bot. My
-            guess is, f you&rsquo;re an experienced developer, it would probably
-            take you no more than a few hours. Either way, I am super excited to
-            learn all about building robots for Github;
+            guess is, if you&rsquo;re an experienced developer, it would
+            probably take you no more than a few hours. Either way, I am super
+            excited to learn all about building robots for Github;
           </p>
         </IntroSectionDescription>
 

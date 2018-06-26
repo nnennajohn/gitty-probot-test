@@ -1,33 +1,59 @@
+aliases:
+  - &restore-cache
+    keys:
+      - yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - yarn-packages-{{ .Branch }}
+      - yarn-packages-master
+      - yarn-packages-
+  - &save-cache
+    paths:
+      - node_modules
+    key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+
+   - &deploy
+    command: |
+      git config --global user.email "nnennajohn@gmail.com"
+      git config --global user.name Nnenna John"
+      yarn deploy
+
 version: 2
 general:
   branches:
     ignore:
       - gh-pages
 jobs:
+  lint-and-flowcheck:
+    working_directory: ~/gitty-probot-test
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - restore-cache: *restore-cache
+      - run: yarn --no-progress
+      - save-cache: *save-cache
+      - run: yarn lint:ci && yarn typecheck:ci
+      - store_test_results:
+          path: reports/junit
+
   build:
+    working_directory: ~/gitty-probot-test
     docker:
       - image: node:9
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
-            - yarn-packages-{{ .Branch }}
-            - yarn-packages-master
-            - yarn-packages-
-      - run:
-          name: install-deps
-          command: yarn install
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          paths:
-            - node_modules
-      - run:
-          name: test
-          command: yarn test
-      - run:
-          name: deploy
-          command: yarn deploy
+      - restore-cache: *restore-cache
+      - run: yarn --no-progress
+      - save-cache: *save-cache
+      - run: yarn test
+
+  deploy-website:
+    working_directory: ~/gitty-probot-test
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore-cache: *restore-cache
+      - run: yarn --no-progress
+      - save-cache: *save-cache
+      - deploy: *deploy
 

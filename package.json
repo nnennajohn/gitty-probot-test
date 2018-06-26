@@ -23,6 +23,8 @@
     "lint:css": "stylelint ./src/**/*.css",
     "lint:scss": "stylelint --syntax=scss ./src/**/*.scss",
     "lint:js": "eslint . && flow check .",
+    "lint:ci": "eslint . --cache --ext js,md --ignore-path .gitignore",
+    "typecheck:ci": "flow check --include-warnings",
     "precommit": "lint-staged",
     "preview": "yarn clean && yarn build && http-server ./public -p 8000 -P http://localhost:8000",
     "test": "jest",
