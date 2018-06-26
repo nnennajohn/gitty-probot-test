@@ -30,7 +30,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test-coverage": "jest --coverage",
-    "test:ci": "jest --coverage --rootDir .",
+    "test:ci": "jest --coverage",
     "graphql": "gql-gen --url http://localhost:8000/___graphql --template typescript --out ./graphql-types.d.ts"
   },
   "lint-staged": {
@@ -129,9 +129,9 @@
   },
   "jest": {
     "setupFiles": [
-      "<rootDir>/test/jestSetup.js"
+      "<rootDir>/jestSetup.js"
     ],
-    "setupTestFrameworkScriptFile": "<rootDir>/test/jestFrameworkSetup.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/jestFrameworkSetup.js",
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
