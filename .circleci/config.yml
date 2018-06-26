@@ -19,10 +19,16 @@ jobs:
           name: Save Yarn Package Cache
           key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
-            - node_modules/
+            - node_modules
       - run:
           name: lint
           command: yarn lint:js
       - run:
           name: test
           command: yarn test
+  deployment:
+    production:
+      branch: master
+      commands:
+      - ./scripts/deploy-ghpages.sh build
+
