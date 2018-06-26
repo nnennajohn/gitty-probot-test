@@ -10,6 +10,7 @@ import './fonts.css';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import PageTransition from '../components/PageTransition';
 
 import {
   injectGlobalStyles,
@@ -185,7 +186,7 @@ const Layout = ({
     <PageWrapper>
       {!(pathname === '/') && <Waves />}
       <InnerPageWrapper isHome={pathname === '/'}>
-        {children()}
+        <PageTransition>{children()}</PageTransition>
       </InnerPageWrapper>
     </PageWrapper>
     <Footer />
