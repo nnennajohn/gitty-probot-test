@@ -9,7 +9,7 @@ commit: 30939d5
 
 # Getting Started
 
-Something to push. The first thing I did, like I always do when starting something new, is to go through the docs. It's interesting discovering everyday how little you know of what you think you know.
+The first thing I did, like I always do when starting something new, is to go through the docs. It's interesting discovering everyday how little you know of what you think you know.
 
 ## Probot Docs and Github Webhook API
 
