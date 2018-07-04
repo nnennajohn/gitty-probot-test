@@ -13,8 +13,12 @@ describe('config', () => {
     });
   });
   describe('config()', () => {
+    // it('should be a function', () => {
+    //   expect(typeof config).toEqual('function');
+    // });
+    // Fail test
     it('should be a function', () => {
-      expect(typeof config).toEqual('function');
+      expect(typeof config).toEqual('string');
     });
   });
 });
