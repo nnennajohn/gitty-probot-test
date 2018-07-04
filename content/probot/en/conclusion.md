@@ -9,7 +9,7 @@ commit: 30939d5
 
 # Getting Started
 
-Tiny Minort chang. The first thing I, like I always do when starting something new, is to go through the docs. It's interesting discovering everyday how little you know of what you think you know.
+TriggerCI. The first thing I, like I always do when starting something new, is to go through the docs. It's interesting discovering everyday how little you know of what you think you know.
 
 ## Probot Docs and Github Webhook API
 
