@@ -27,9 +27,9 @@
     "typecheck:ci": "flow check --include-warnings",
     "precommit": "lint-staged",
     "preview": "yarn clean && yarn build && http-server ./public -p 8000 -P http://localhost:8000",
-    "test": "jest",
+    "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "test:ci": "jest --coverage",
+    "test:ci": "jest",
     "graphql": "gql-gen --url http://localhost:8000/___graphql --template typescript --out ./graphql-types.d.ts"
   },
   "lint-staged": {
