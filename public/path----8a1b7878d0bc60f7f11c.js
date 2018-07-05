@@ -1,0 +1,2 @@
+webpackJsonp([60335399758886],{130:function(t,e){t.exports={data:{site:{siteMetadata:{title:"Probot Gitty Test",description:"Probot Gitty Playground built with Gatsby",githubUrl:"https://github.com/nnennajohn/gitty-probot-test",permalink:"https://weekendprojects.io/",toc:["getting-started","create-probot-app","core-development","test-fixture-setup","writing-some-tests","deployment","conclusion"]}}},layoutContext:{}}}});
+//# sourceMappingURL=path----8a1b7878d0bc60f7f11c.js.map
