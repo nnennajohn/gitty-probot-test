@@ -7,8 +7,8 @@ module.exports = {
     toc: [
       'getting-started',
       'create-probot-app',
-      'test-fixture-setup',
       'core-development',
+      'test-fixture-setup',
       'writing-some-tests',
       'deployment',
       'conclusion',

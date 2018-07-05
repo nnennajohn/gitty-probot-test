@@ -3,60 +3,62 @@ tags:
   - probot
 title: "Core Development"
 tocTitle: "Core Development"
-description: "Getting started by going through Probot Docs and Github Webhook API"
+description: "Let's really get this party started!"
 ---
 
-# Getting Started
+# The Game Plan
 
-The first thing I did, like I always do when starting something new, is to go through the docs. It's interesting discovering everyday how little you know of what you think you know.
+At this point, we have everything we need to get this app working. Below is a sample screenshot of smee reporting and pushing all webhook actions directly to our local machine. Pure Joy.
 
-## Probot Docs and Github Webhook API
+![SMEE Live updates](/images/probot-03-smee-live-updates.png)
 
-The very first section of the [Probot Guide](https://probot.github.io/docs/hello-world/) led me to discover Github webhooks. I've never built an app for Github or had any reason until now to use them, though I have used several pre-existing apps. So I was quite fascinated at the amount of events and informations that webhooks make available. So many use-cases. But let's stay on track. :smile:
+Any event we listen for on our local machine will show up here.
 
-Since our current task is to built a bot that posts a comments when our CI tests fail, I tried to figure out what event our new bot should be subscribed to. It was not immediately apparent what event we should listen to. I settled on the [StatusEvent](https://developer.github.com/v3/activity/events/types/#statusevent) after going through a summary of its Event API Payload.
+To get a good vision of what we want our bot to do, let's list it out:
 
-![Github Webhook StatusEvent](/images/probot-01-getting-started-github-webhook.png)
+## Gitty-Probot Guideline
 
-<div class="aside">
-  NOTE: You can view the full list of all Github Webhook Events <a href="https://developer.github.com/webhooks/#events">here</a>.
-</div>
+- [x] Our Bot should post a comment when our CI, in this case Circle-CI has passed or failed our test.
+- [x] Our Bot should not respond to any other status. Including `pending`, `open`, etc.
+- [x] Our Bot should not respond to any other event, except `status` and `installation.created` event.
+- [x] Our Bot shall not crash! 😊
+- [x] Our Bot has to be a happy bot. Test Failure or Success, we stay happy.
+- [x] During development, our Bot code should be written in plain easy-to-understand language, so we can encourage anyone to build upon it and contribute. No cryptic code!
+- [x] Our Bot should have succinct descriptive tests that cover the scenarios listed above.
+- [x] And lastly, empathy. No profane language will be coming from our Bot. 😊
 
-## Narrowing down our event.
+## Starting Simple
 
-From the docs on Probot site, it's just a Node.js module that exports a function:
+To get things rolling, I started with a very basic version of our app. I decided to test the app functionality by responding to a single event. In this case, the `installation.created` event.
 
-```js
-module.exports = (robot) => {
-  // your code here
-};
+```javascript
+app.on('installation.created', async (context) => {
+  app.log('App has been successfully installed. Yay!.');
+  const [owner, repo] = await context.payload.repositories[0].full_name.split(
+    '/',
+  );
+  app.log(`repo: ${owner}/${repo}`);
+  createConfigYML(context, { owner, repo });
+});
 ```
 
-And since the issue event is what we will be listening for, the handle example below straigh from the docs seems like it will be a solid place to start building out our bot.
+In the above, we are simply listening for the `installation.created` event and logging a happy message to the console. I add the createConfigYML later to attempt to handle private repos down the line.
+
+Once I had the above line in, I went ahead and installed the app on a test repo, and lo and behold, I got feedback in my console that with the logs expected. Magic!🎉
+
+We are officially in business.
+
+Everything else I did followed this format. Write a simple listener, verify that it works. Then extend it. Each time, building upon what already works. This has the benefit of helping me maintain as much simplicity and readability as possible.
+
+Once I had the above working, before doing anything else, I wrote some tests.
 
 <div class="aside">
-  Example of an autoresponder app that comments on opened issues:
+  NOTE: We cover test setup in the next section. But to get a headsup, you can view the docs here: <a href="https://probot.github.io/docs/testing/">Probot Testign Guide</a>.
 </div>
 
-```js
-module.exports = (robot) => {
-  robot.on('issues.opened', async (context) => {
-    // `context` extracts information from the event, which can be passed to
-    // GitHub API calls. This will return:
-    //   {owner: 'yourname', repo: 'yourrepo', number: 123, body: 'Hello World!}
-    const params = context.issue({ body: 'Hello World!' });
+## Building Out
 
-    // Post a comment on the issue
-    return context.github.issues.createComment(params);
-  });
-};
-```
-
-Ok. This is looking a little too easy, and I am very much tempted to stop reading here and fire up my editor. :smile: But I've since learned to **READ THE DOCS**. All too often, I run into problems that I might have easily surpassed, if I just had a little more patience and read through the docs.
-
-## Go Read the Docs.
-
-Ok. Since you are already here, you might as well go [read the docs](https://probot.github.io/docs/hello-world/) as well. It's just a few pages, and should probably take no more than an hour. And hopefully, in the next chapter, we get to the fun part - Building our bot.
+The rest of the process from here on out was pretty smooth. There was a bit of challenge finding out all that's available in the context passed to the bot. I also ran into some challenge trying to figure out how to get the Cicle-ci logs
 
 <div>
   See you on the flip-side! <span>🎉<span>
