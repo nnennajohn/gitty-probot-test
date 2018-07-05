@@ -1,63 +1,45 @@
 ---
 tags:
   - probot
-title: "Testing"
-tocTitle: "Testing"
-description: "Getting started by going through Probot Docs and Github Webhook API"
+title: "Testing Setup"
+tocTitle: "Testing Setup"
+description: "Let's setup our test and add some text fixtures"
 ---
 
-# Getting Started
+# Getting some Test Fixtures
 
-The first thing I did, like I always do when starting something new, is to go through the docs. It's interesting discovering everyday how little you know of what you think you know.
+To get our tests up and running, we need to setup some test fixtures. All Test fixtures really means is a `fixed state` used as a baseline for running tests in Software testing.
 
-## Probot Docs and Github Webhook API
+In our particular use case, we need to consistently simulate a fixed return state for all the events our bot will be responding to.
 
-The very first section of the [Probot Guide](https://probot.github.io/docs/hello-world/) led me to discover Github webhooks. I've never built an app for Github or had any reason until now to use them, though I have used several pre-existing apps. So I was quite fascinated at the amount of events and informations that webhooks make available. So many use-cases. But let's stay on track. :smile:
+Again, the Probot and Github team shines here. This was really a breeze. There are two ways to get these fixtures for our events. One is directly on Github via the Advanced tab in the Bot settings page. The other is directly on SMEE. I went with the Github route, only because I think after our app is deployed and we have our own server recieving the webhooks, this is probably the route we will stay with. The SMEE route had the advantage of listing out the event name, making it easier to find the specific fixture you want, as seen below.
 
-Since our current task is to built a bot that posts a comments when our CI tests fail, I tried to figure out what event our new bot should be subscribed to. It was not immediately apparent what event we should listen to. I settled on the [StatusEvent](https://developer.github.com/v3/activity/events/types/#statusevent) after going through a summary of its Event API Payload.
+### SMEE Recent Webhook Deliveries
 
-![Github Webhook StatusEvent](/images/probot-01-getting-started-github-webhook.png)
+![SMEE Recent Webhook Deliveries](/images/probot-04-smee-deliveries.png)
 
-<div class="aside">
-  NOTE: You can view the full list of all Github Webhook Events <a href="https://developer.github.com/webhooks/#events">here</a>.
-</div>
+### Github Recent Webhook Deliveries
 
-## Narrowing down our event.
+![Github Recent Webhook Deliveries](/images/probot-04-github-deliveries.png)
 
-From the docs on Probot site, it's just a Node.js module that exports a function:
+---
 
-```js
-module.exports = (robot) => {
-  // your code here
-};
-```
+Both instances provided a button to redeliver the webhook event. And SMEE nicely provided a copy-to-clipboard button which would be very valuable is copying over a large payload.
 
-And since the issue event is what we will be listening for, the handle example below straigh from the docs seems like it will be a solid place to start building out our bot.
+### SMEE Recent Webhook Expanded
 
-<div class="aside">
-  Example of an autoresponder app that comments on opened issues:
-</div>
+![SMEE Recent Webhook Deliveries](/images/probot-04-smee-deliveries-expanded.png)
 
-```js
-module.exports = (robot) => {
-  robot.on('issues.opened', async (context) => {
-    // `context` extracts information from the event, which can be passed to
-    // GitHub API calls. This will return:
-    //   {owner: 'yourname', repo: 'yourrepo', number: 123, body: 'Hello World!}
-    const params = context.issue({ body: 'Hello World!' });
+### Github Recent Webhook Expanded
 
-    // Post a comment on the issue
-    return context.github.issues.createComment(params);
-  });
-};
-```
+![Github Recent Webhook Deliveries](/images/probot-04-github-deliveries-expanded.png)
 
-Ok. This is looking a little too easy, and I am very much tempted to stop reading here and fire up my editor. :smile: But I've since learned to **READ THE DOCS**. All too often, I run into problems that I might have easily surpassed, if I just had a little more patience and read through the docs.
+## Using our Test Fixtures.
 
-## Go Read the Docs.
+Thas's really all we did for this section. As you can see, both provide a very easy way to get test fixtures for any event we'd like to test. I went ahead and triggered all three events I was interested in. `installation.created`, `status` with a failed state, and `status` with a success state. Downloaded all three to json files in the test/fixtures folder and gave them appropriate names to match the payload, so its easy to recognize what's doing what.
 
-Ok. Since you are already here, you might as well go [read the docs](https://probot.github.io/docs/hello-world/) as well. It's just a few pages, and should probably take no more than an hour. And hopefully, in the next chapter, we get to the fun part - Building our bot.
+In the next section, we will use these fixtures to simulate and write some tests.
 
 <div>
-  See you on the flip-side! <span>🎉<span>
+  Excited yet? Let's do this! <span>🎉<span>
 </div>

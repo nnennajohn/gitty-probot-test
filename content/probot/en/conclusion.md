@@ -3,62 +3,34 @@ tags:
   - probot
 title: "Conclusion"
 tocTitle: "Conclusion"
-description: "Getting started by going through Probot Docs and Github Webhook API"
+description: "And its a wrap"
 commit: 30939d5
 ---
 
-# Getting Started
+# And it's a wrap!
 
-Tiny Minort chang. The first thing I, like I always do when starting something new, is to go through the docs. It's interesting discovering everyday how little you know of what you think you know.
+This was super fun. A few hiccups initially, with figuring out how SMEE delivers webhooks to our local dev environment. But after that, it was all uphill from there. This whole process took two weekends, with the first weekend entirely dedicated to my previous mistake of deploying each time to see the webhook in Github, instead of using the SMEE channel.
 
-## Probot Docs and Github Webhook API
+## Takeaways!
 
-Test update PR. First section of the [Probot Guide](https://probot.github.io/docs/hello-world/) led me to discover Github webhooks. I've never built an app for Github or had any reason until now to use them, though I have used several pre-existing apps. So I was quite fascinated at the amount of events and informations that webhooks make available. So many use-cases. But let's stay on track. :smile:
+I think the Probot team did an excellent job with the Documentation. Literally every step listed was on point and correct. I'd probably emphasis a bit more about the dev process of recieving webhooks on your local machine. Otherwise, there's really not much else to add.
 
-Since our current task is to built a bot that posts a comments when our CI tests fail, I tried to figure out what event our new bot should be subscribed to. It was not immediately apparent what event we should listen to. I settled on the [StatusEvent](https://developer.github.com/v3/activity/events/types/#statusevent) after going through a summary of its Event API Payload.
+This was a pleasurable experience. And I am now left thinking of all the cool bots I'd like to build. Well, when I'm not working.:)
 
-![Github Webhook StatusEvent](/images/probot-01-getting-started-github-webhook.png)
+As for our bot, I wanted to add a means for private repos to be able to use this, and started off by adding a config yml file, where they would need to input a read-only token from Circle-CI. The plan is to still go ahead and make a comment on a PR, but instead of a CI comment, it would be a reminder to update their gitty-probot.yml file with the correct token. But I figured, this might involve keeping count and doing this only once, as it might become annoying. But I imagine you would not install the bot if you don't want a comment. Either way, its something I'd explore next, as I work quite a bit with a few private repos, that all use Circle-CI.
 
-<div class="aside">
-  NOTE: You can view the full list of all Github Webhook Events <a href="https://developer.github.com/webhooks/#events">here</a>.
-</div>
+As for improvements to the app is. Beyond supporting private repos, maybe add on Travis and any other popular CI.
 
-## Narrowing down our event.
+---
 
-From the docs on Probot site, it's just a Node.js module that exports a function:
+Over all, I had a blast. And I remember calling a friend over when Gitty-Probot made its first comment. I was truly happy. Nothing more rewarding than when "IT" works. 🎉🎉🎉
 
-```js
-module.exports = (robot) => {
-  // your code here
-};
-```
+## It's a Goal
 
-And since the issue event is what we will be listening for, the handle example below straigh from the docs seems like it will be a solid place to start building out our bot.
+There's a popular Nigerian song right now that describes my current feeling:
 
-<div class="aside">
-  Example of an autoresponder app that comments on opened issues:
-</div>
-
-```js
-module.exports = (robot) => {
-  robot.on('issues.opened', async (context) => {
-    // `context` extracts information from the event, which can be passed to
-    // GitHub API calls. This will return:
-    //   {owner: 'yourname', repo: 'yourrepo', number: 123, body: 'Hello World!}
-    const params = context.issue({ body: 'Hello World!' });
-
-    // Post a comment on the issue
-    return context.github.issues.createComment(params);
-  });
-};
-```
-
-Ok. This is looking a little too easy, and I am very much tempted to stop reading here and fire up my editor. :smile: But I've since learned to **READ THE DOCS**. All too often, I run into problems that I might have easily surpassed, if I just had a little more patience and read through the docs.
-
-## Go Read the Docs.
-
-Ok. Since you are already here, you might as well go [read the docs](https://probot.github.io/docs/hello-world/) as well. It's just a few pages, and should probably take no more than an hour. And hopefully, in the next chapter, we get to the fun part - Building our bot.
+[ISSA GOAL](https://www.youtube.com/watch?v=D-zdHo4LJJI) -> Short for "It's a goal(WIN)"
 
 <div>
-  See you on the flip-side! <span>🎉<span>
+  That's all for now! Keep hacking... <span>🎉<span>
 </div>

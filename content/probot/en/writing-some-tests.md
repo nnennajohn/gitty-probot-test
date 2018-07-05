@@ -3,61 +3,113 @@ tags:
   - probot
 title: "Writing Some Tests"
 tocTitle: "Writing Some Tests"
-description: "Getting started by going through Probot Docs and Github Webhook API"
+description: "Testing the testing the testing!"
 ---
 
-# Getting Started
+# Test!
 
-The first thing I did, like I always do when starting something new, is to go through the docs. It's interesting discovering everyday how little you know of what you think you know.
+Ok. Here we go. I know some of us have a love hate relationship with tests. :) I take an incremental approach to tests, writing a bit at a time as I develop, while keeping them as simple as possible, enough to properly cover the core functionality of the app or function under test.
 
-## Probot Docs and Github Webhook API
+## Setup up our Test Context.
 
-The very first section of the [Probot Guide](https://probot.github.io/docs/hello-world/) led me to discover Github webhooks. I've never built an app for Github or had any reason until now to use them, though I have used several pre-existing apps. So I was quite fascinated at the amount of events and informations that webhooks make available. So many use-cases. But let's stay on track. :smile:
+When we bootstrapped with the Create Robot app, it alread setup a very simplistic test suite for us. And already had jest setup for us(Very Nice). But what it had would not be enough to get the proper context of our Bot. The Probot site to the rescue! The guide and sample code provided was spot on.
 
-Since our current task is to built a bot that posts a comments when our CI tests fail, I tried to figure out what event our new bot should be subscribed to. It was not immediately apparent what event we should listen to. I settled on the [StatusEvent](https://developer.github.com/v3/activity/events/types/#statusevent) after going through a summary of its Event API Payload.
+```javascript
+// Requiring probot allows us to initialize an application
+const { Application } = require('probot');
+// Requiring our app implementation
+const plugin = require('');
+// Create a fixtures folder in your test folder
+// Then put any larger testing payloads in there
+const payload = require('./fixtures/payload');
 
-![Github Webhook StatusEvent](/images/probot-01-getting-started-github-webhook.png)
+describe('your-app', () => {
+  let app;
+  let github;
 
-<div class="aside">
-  NOTE: You can view the full list of all Github Webhook Events <a href="https://developer.github.com/webhooks/#events">here</a>.
-</div>
-
-## Narrowing down our event.
-
-From the docs on Probot site, it's just a Node.js module that exports a function:
-
-```js
-module.exports = (robot) => {
-  // your code here
-};
-```
-
-And since the issue event is what we will be listening for, the handle example below straigh from the docs seems like it will be a solid place to start building out our bot.
-
-<div class="aside">
-  Example of an autoresponder app that comments on opened issues:
-</div>
-
-```js
-module.exports = (robot) => {
-  robot.on('issues.opened', async (context) => {
-    // `context` extracts information from the event, which can be passed to
-    // GitHub API calls. This will return:
-    //   {owner: 'yourname', repo: 'yourrepo', number: 123, body: 'Hello World!}
-    const params = context.issue({ body: 'Hello World!' });
-
-    // Post a comment on the issue
-    return context.github.issues.createComment(params);
+  beforeEach(() => {
+    // Here we create an `Application` instance
+    app = new Application();
+    // Here we initialize the app
+    app.load(plugin);
+    // This is an easy way to mock out the GitHub API
+    github = {
+      issues: {
+        createComment: jest.fn().mockReturnValue(
+          Promise.resolve({
+            // Whatever the GitHub API should return
+          }),
+        ),
+      },
+    };
+    // Passes the mocked out GitHub API into out app instance
+    app.auth = () => Promise.resolve(github);
   });
+
+  describe('your functionality', () => {
+    it('performs an action', async () => {
+      // Simulates delivery of a payload
+      // event is the X-GitHub-Event header sent by GitHub (for example "push")
+      // payload is the webhook payload body
+      await app.receive({ event: 'push', payload });
+      // This test would pass if in your main code you called `context.github.issues.createComment`
+      expect(github.issues.createComment).toHaveBeenCalled();
+    });
+  });
+});
+```
+
+---
+
+There's not much more to add to it. My setup was an exact replica, with the only modication being to add a couple more github mocks for some additonal funcs I used.
+
+```javascript
+// Mock out the GitHub API
+github = {
+  issues: {
+    createComment: jest.fn(),
+  },
+  repos: {
+    createFile: jest.fn().mockReturnValue(Promise.resolve(true)),
+  },
+  pullRequests: {
+    getAll: jest.fn(),
+  },
 };
 ```
 
-Ok. This is looking a little too easy, and I am very much tempted to stop reading here and fire up my editor. :smile: But I've since learned to **READ THE DOCS**. All too often, I run into problems that I might have easily surpassed, if I just had a little more patience and read through the docs.
+And here is an example of a test I had to check that it comments on PR failure. Notice the use of the fixture we setup earlier in the previous chapter:
 
-## Go Read the Docs.
+```javascript
+describe('Create Comment on Failure', () => {
+  it('correctly creates comment on failure', async () => {
+    await app.receive({
+      event: 'status',
+      payload: ciFailurePayload,
+    });
+    // Should immediately create comment on failure payload
+    const createCommentCalls = github.issues.createComment.mock.calls;
 
-Ok. Since you are already here, you might as well go [read the docs](https://probot.github.io/docs/hello-world/) as well. It's just a few pages, and should probably take no more than an hour. And hopefully, in the next chapter, we get to the fun part - Building our bot.
+    const expectedReturnRepo = 'gitty-probot-test';
+    const expectedReturnOwner = 'nnennajohn';
+
+    // Test that createComment func got called.
+    expect(github.issues.createComment).toHaveBeenCalled();
+    expect(createCommentCalls.length).toBe(1);
+
+    // // Return Value of successfully creating comment
+    const returnRepo = createCommentCalls[0][0].repo;
+    const returnOwner = createCommentCalls[0][0].owner;
+    expect(returnRepo.startsWith(expectedReturnRepo)).toBeTruthy();
+    expect(returnOwner.startsWith(expectedReturnOwner)).toBeTruthy();
+  });
+});
+```
+
+And that's all there really is to it. You can def do more and test as much as possible, but in this case, I was mostly interested in testing the 3 events we were listening for. I also added a test to make sure it does not comment on anything outside the 3 events we are listeniing for.
+
+And its a wrap! Almost!
 
 <div>
-  See you on the flip-side! <span>🎉<span>
+  Next up. Let's deploy this Botty Botty Bot! <span>🎉<span>
 </div>
