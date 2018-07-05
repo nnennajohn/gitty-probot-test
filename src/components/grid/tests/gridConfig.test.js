@@ -18,7 +18,7 @@ describe('config', () => {
     // });
     // Fail test
     it('should be a function', () => {
-      expect(typeof config).toEqual('stringyz');
+      expect(typeof config).toEqual('string');
     });
   });
 });
