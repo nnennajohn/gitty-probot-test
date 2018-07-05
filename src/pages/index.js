@@ -244,7 +244,9 @@ export default ({
         <Content>
           <Pitch>
             <Title>Bite-Sized Learning</Title>
-            <Desc>"Weekendly" Fun Projects to grow your techinal chops</Desc>
+            <Desc>
+              "Weekendly" Fun Projects to grow your <br />TECNICAL CHOPS.
+            </Desc>
             <BrandTiles />
           </Pitch>
         </Content>
