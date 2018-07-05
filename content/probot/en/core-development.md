@@ -53,13 +53,39 @@ Everything else I did followed this format. Write a simple listener, verify that
 Once I had the above working, before doing anything else, I wrote some tests.
 
 <div class="aside">
-  NOTE: We cover test setup in the next section. But to get a headsup, you can view the docs here: <a href="https://probot.github.io/docs/testing/">Probot Testign Guide</a>.
+  NOTE: We cover test setup in the next section. But to get a headsup, you can view the docs here: <a href="https://probot.github.io/docs/testing/">Probot Testing Guide</a>.
 </div>
 
 ## Building Out
 
-The rest of the process from here on out was pretty smooth. There was a bit of challenge finding out all that's available in the context passed to the bot. I also ran into some challenge trying to figure out how to get the Cicle-ci logs
+The rest of the process from here on out was pretty smooth. There was a bit of challenge finding out all that's available in the context passed to the bot. I also ran into some challenge trying to figure out how to get the Cicle-ci logs.
+
+But I just continued down the path of creating small increments and testing along the way. The entirety of the app can be seen below, with the core being just three listeners, and delegating most of the work done to smaller utility functions.
+
+![Core Dev](/images/probot-03-core-dev.png)
+
+## Summary of Dev Logic
+
+Below is a summary/outline of the micro steps I took:
+
+- On app load, log a success message
+- On app Install, log another success message and create a configYML file for Circle-CI Token on private repos
+- On app event `status`, we do the following:
+  - Is this coming from an event triggered by CircleCI? If no, do nothing
+  - If it is, we construct an object with all the info we will need, so we can pass the object around to somewhat pure functions.
+  - Once we have our object, all our checks moving on will be against this object. This way, we also save having to query the context each time.
+  - We check if the `event.status` state is a `success`. If yes, we pass the `context`and `gittyData` object to a `processSuccessMessage` function.
+  - The `processSuccessMessage` function simply takes what data it needs from the `gittyData` object, constructs a comment, and posts it with the `createComment` method available on the `context.github.issues`
+  - If the `event.status` state is a `failure`, we do the same exact steps above, with only one small modification. We introduce a new utitility async `processCircleCI` func, that handles making the XHR request to CircleCI, to get the build logs.
+  - Once we have the build log from CircleCI, the message format is similar, except we add the `ciMessage` we got back from the `processCircleCI` func above. And of course, we swap out some verbiage and emojis. 😅
+  - And really, that's all there is to it.
+
+## Does it really work?
+
+Ha ha. Of course it does. But we will verify a lot of this in the next section on tests.
+
+Feel free to push some tests to Circle and verify that this all does what it should do.
 
 <div>
-  See you on the flip-side! <span>🎉<span>
+  See you on the test-flip-side in the next section! <span>🎉<span>
 </div>
